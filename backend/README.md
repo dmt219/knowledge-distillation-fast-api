@@ -1,8 +1,13 @@
 # Deploy GPT2 model to triton server
 
-## 1. Download ckpt (if not, the ckpt will automatic download while build docker image)
-- Download the checkpoint (*.pt) and move it to ./docker/tritonserver/student_distill.pt
-
+## 1. Prepare packages
+- Download the checkpoint (*.pt) and move it to ./docker/tritonserver/student_distill.pt \
+  If not, the ckpt will automatic download while build docker image
+- Download tritonserver images:
+```
+docker pull nvcr.io/nvidia/tritonserver:23.07-py3
+docker pull nvcr.io/nvidia/tritonserver:23.07-py3-sdk
+```
 ## 2. Prepare Triton server
 - 2.1 Build image and start tritonserver container
 ```bash
