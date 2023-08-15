@@ -10,7 +10,7 @@ const ChatWindow = () => {
     setChatHistory((chatHistory) => [...chatHistory, newUserMessage]);
 
     try {
-      const response = await axios.post("http://localhost:8000/generate", {
+      const response = await axios.post("http://localhost:5000/generate", {
         message: messageText,
       });
       const botResponse = { text: response.data.message, sender: "bot" };
