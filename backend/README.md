@@ -1,10 +1,6 @@
 # Deploy GPT2 model to triton server
 
-## 1. Clone repository
-```bash
-git clone https://github.com/ThuanNaN/triton-gpt2.git
-cd triton-gpt2
-```
+## 1. Download ckpt (if not, the ckpt will automatic download while build docker image)
 - Download the checkpoint (*.pt) and move it to ./docker/tritonserver/student_distill.pt
 
 ## 2. Prepare Triton server
