@@ -7,8 +7,8 @@
 - Download tritonserver images:
 
 ```
-docker pull nvcr.io/nvidia/tritonserver:23.07-py3
-docker pull nvcr.io/nvidia/tritonserver:23.07-py3-sdk
+docker pull nvcr.io/nvidia/tritonserver:23.06-py3
+docker pull nvcr.io/nvidia/tritonserver:23.06-py3-sdk
 ```
 
 ## 2. Prepare Triton server
@@ -16,13 +16,13 @@ docker pull nvcr.io/nvidia/tritonserver:23.07-py3-sdk
 - 2.1 Build image and start tritonserver container
 
 ```bash
-PWD=$(pwd) docker compose -f ./docker/tritonserver/docker-compose.yml up -d
+PWD=$(pwd) docker compose -f backend/docker/tritonserver/docker-compose.yml up -d
 ```
 
 - 2.1 Stop tritonserver container
 
 ```bash
-PWD=$(pwd) docker compose -f ./docker/tritonserver/docker-compose.yml down
+PWD=$(pwd) docker compose -f backend/docker/tritonserver/docker-compose.yml down
 ```
 
 ## 3. Prepare Client server
@@ -30,13 +30,13 @@ PWD=$(pwd) docker compose -f ./docker/tritonserver/docker-compose.yml down
 - 3.1 Build image and start FastAPI container
 
 ```bash
-PWD=$(pwd) docker compose -f ./docker/fastapi/docker-compose.yml up -d
+PWD=$(pwd) docker compose -f backend/docker/fastapi/docker-compose.yml up -d
 ```
 
 - 3.2 Stop FastAPI container
 
 ```bash
-PWD=$(pwd) docker compose -f ./docker/fastapi/docker-compose.yml down
+PWD=$(pwd) docker compose -f backend/docker/fastapi/docker-compose.yml down
 ```
 
 ## 4. Test inference

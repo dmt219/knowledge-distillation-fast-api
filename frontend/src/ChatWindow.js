@@ -33,7 +33,9 @@ const MessageList = ({ chatHistory }) => {
     <ul className="message-list">
       {chatHistory.map((message, index) => (
         <li key={index} className={`message ${message.sender}`}>
-          {message.text}
+          {message.text.split(/\n/).map((line) => (
+            <div key={line}>{line}</div>
+          ))}
         </li>
       ))}
     </ul>
@@ -44,7 +46,7 @@ const MessageInput = ({ onMessageSubmit }) => {
   const [inputMessage, setInputMessage] = useState("");
 
   const handleSubmit = () => {
-    if (inputMessage.trim() !== "") {
+    if (inputMessage !== "") {
       onMessageSubmit(inputMessage);
       setInputMessage("");
     }

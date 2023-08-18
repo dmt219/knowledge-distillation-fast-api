@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tritonserver:23.07-py3
+FROM nvcr.io/nvidia/tritonserver:23.06-py3
 
 COPY requirements.txt .
 COPY student_distill.pt .

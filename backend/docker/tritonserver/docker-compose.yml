@@ -6,7 +6,7 @@ services:
     image: triton_img
     restart: on-failure
     volumes:
-      - ${PWD}/model_repository:/models
+      - ${PWD}/backend/model_repository:/models
     build:
       context: .
       dockerfile: Dockerfile

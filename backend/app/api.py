@@ -1,6 +1,5 @@
 from fastapi import FastAPI
-import uvicorn
-from fastapi import FastAPI
+from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import tritonclient.http as httpclient
@@ -25,11 +24,14 @@ app.add_middleware(
 async def read_root() -> dict:
     return {"message": "Welcome to your todo list."}
 
+class Input(BaseModel):
+    message: str
+
 @app.post('/generate')
-def generate(prompt: str):
+async def generate(input: Input):
     client = httpclient.InferenceServerClient(url="localhost:8000")
     # Inputs
-    text_obj = np.array([prompt], dtype="object")
+    text_obj = np.array([input.message], dtype="object")
 
     input_tensors = [
         httpclient.InferInput("TEXT", text_obj.shape, np_to_triton_dtype(text_obj.dtype)),
